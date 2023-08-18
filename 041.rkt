@@ -26,7 +26,7 @@
 
 (define Y-CAR (- (* 8 WHEEL-RADIUS) (/ (image-height CAR) 2)))
 
-(define BACKGROUND (rectangle (* 100 WHEEL-RADIUS)
+(define BACKGROUND (rectangle (* 70 WHEEL-RADIUS)
                               (* 8 WHEEL-RADIUS)
                               "outline"
                               "black"))
@@ -50,8 +50,11 @@
 
 ; WorldState -> Boolean
 ; true when the car has disappeared on the right side 
-(define (end? cw) (> (- cw (/ (image-width CAR) 2))
-                        (image-width BACKGROUND)))
+;(define (end? cw) (> (- cw (/ (image-width CAR) 2))
+;                        (image-width BACKGROUND)))
+(define (end? cw) (> cw
+                     (+ (image-width BACKGROUND) (/ (image-width CAR) 2) 5)))
+
 
 ; WorldState -> WorldState
 ; launches the program from some initial state 

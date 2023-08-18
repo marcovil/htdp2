@@ -5,7 +5,7 @@
 
 (define WHEEL-RADIUS 5)
 
-(define BODY-LENGTH (* 9 WHEEL-RADIUS))
+(define BODY-LENGTH (* 8 WHEEL-RADIUS))
 (define BODY-HEIGHT (* 2 WHEEL-RADIUS))
 
 (define BODY (rectangle BODY-LENGTH BODY-HEIGHT "solid" "red"))
@@ -18,7 +18,7 @@
                 (* 1 WHEEL-RADIUS)
                 (* 2 WHEEL-RADIUS)
                 WHEEL)
-   (* 6 WHEEL-RADIUS)
+   (* 5 WHEEL-RADIUS)
    (* 2 WHEEL-RADIUS)
    WHEEL)
   )
