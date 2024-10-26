@@ -1,6 +1,6 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-beginner-reader.ss" "lang")((modname |041|) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname |042|) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 (require 2htdp/image)
 (require 2htdp/universe)
 
@@ -33,7 +33,7 @@
 
 ; A WorldState is a Number.
 ; interpretation the number of pixels between
-; the left border of the scene and the car
+; the left border of the scene and the rightmost edge of the car
  
 ; WorldState -> WorldState
 ; moves the car by 3 pixels for every clock tick
@@ -46,14 +46,14 @@
 ; places the car into the BACKGROUND scene,
 ; according to the given world state 
 (define (render cw)
-  (place-image CAR (+ cw (/ (image-width CAR) 2)) Y-CAR BACKGROUND))
+  (place-image CAR (- cw (/ (image-width CAR) 2)) Y-CAR BACKGROUND))
 
 ; WorldState -> Boolean
 ; true when the car has disappeared on the right side 
-;(define (end? cw) (> (- cw (/ (image-width CAR) 2))
-;                        (image-width BACKGROUND)))
-(define (end? cw) (> cw
-                     (+ (image-width BACKGROUND) (/ (image-width CAR) 2))))
+(define (end? cw) (> (- cw (image-width CAR))
+                        (+ (image-width BACKGROUND) 3)))
+;(define (end? cw) (> cw
+;                     (+ (image-width BACKGROUND) (image-width CAR))))
 
 
 ; WorldState -> WorldState
@@ -63,3 +63,4 @@
      [on-tick tock]
      [to-draw render]
      [stop-when end?]))
+
